@@ -3,13 +3,13 @@ services:
     client:
         image: khouloud123456/frontend:2
         ports :
-            - "5000:5000"
+            - "3000:3000"
         depends_on: 
             - server 
     server :
-        image: khouloud123456/backend:1
+        image: khouloud123456/backend:2
         ports: 
-            - "3000:3000"
+            - "5000:5000"
         
 networks:
     default:

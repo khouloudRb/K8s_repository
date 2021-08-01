@@ -1,0 +1,38 @@
+version: "3.3"
+services:
+    sonarqube:
+        image: sonarqube:latest
+        ports :
+            - "9000:9000"
+        networks: 
+            - network_dev 
+        volumes:
+            - sonar-data:/opt/sonarqube/data
+            - sonar-logs:/opt/sonarqube/logs
+            - sonar-extension:/opt/sonarqube/extensions
+
+    jenkins :
+        image: jenkins:2.60.3-alpine
+        ports: 
+            - "8080:8080"
+        networks: 
+            - network_dev 
+        volumes: 
+            - jenkins-home:/var/jenkins_home
+    nexus :
+        image: sonatype/nexus3
+        ports: 
+            - "8081:8081"
+        networks: 
+            - network_dev 
+        volumes:
+            - nexus-data:/nexus-data
+        
+networks:
+    network_dev:
+volumes: 
+    sonar-data
+    sonar-logs
+    sonar-extension
+    nexus-data
+    jenkins-home

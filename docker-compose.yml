@@ -1,18 +1,14 @@
 version: "3.3"
 services:
     client:
-        image: khouloud123456/frontend:2
+        image: khouloud123456/frontend:localhost
         ports :
             - "3000:3000"
+        container_name: frontend
         depends_on: 
             - server 
     server :
         image: khouloud123456/backend:2
         ports: 
             - "5000:5000"
-        
-networks:
-    default:
-    # Use a custom driver
-        driver: "bridge"
-    
+        container_name: backend
